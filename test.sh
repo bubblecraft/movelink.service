@@ -13,10 +13,19 @@ echo aa > test/sources/a/file
 
 
 echo "target=/target" > test/etc/movelink.service.conf
-echo "sources=/sources/a,/sources/b" >> test/etc/movelink.service.conf
+echo "sources=/sources/a,/sources/b,/sources/na" >> test/etc/movelink.service.conf
 
 
 ROOT=$(realpath test) ./src/bin/movelink
+
+if [ -e test/sources/na ]; then
+  echo "ERROR Source na should not exist"
+  exit 1
+fi
+if [ -e test/target/sources/na ]; then
+  echo "ERROR Target na should not exist"
+  exit 1
+fi
 
 if [ ! -L test/sources/a ]; then
   echo "ERROR Directory link a does not exist"

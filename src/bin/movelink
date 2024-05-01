@@ -21,9 +21,13 @@ movelink() {
 for source in ${sources//,/ }
 do
     fullTarget="$target/$source"
-    if ! [ -e "$ROOT$fullTarget" ]; then
-        movelink "$source" "$fullTarget"
+    if [ -e $ROOT$source ]; then
+        if ! [ -e "$ROOT$fullTarget" ]; then
+            movelink "$source" "$fullTarget"
+        else
+            echo Target $fullTarget already exists, ignoring
+        fi
     else
-        echo Target $fullTarget already exists, ignoring
+        echo Source $source does not exist, ignoring
     fi
 done
