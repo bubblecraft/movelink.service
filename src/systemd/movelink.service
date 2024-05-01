@@ -7,4 +7,4 @@ ExecStart=/usr/local/sbin/movelink
 Type=oneshot
 
 [Install]
-WantedBy=k3s.service
+WantedBy=k3s.service k3s-agent.service
