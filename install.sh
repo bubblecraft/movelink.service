@@ -2,10 +2,12 @@
 
 if [ -z "$SOURCES" ]; then
     echo "Error: specify SOURCES variable"
+    exit 1
 fi
 
 if [ -z "$TARGET" ]; then
     echo "Error: specify TARGET variable"
+    exit 1
 fi
 
 
