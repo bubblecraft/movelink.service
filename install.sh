@@ -17,7 +17,7 @@ echo target="$TARGET" >> /etc/movelink.service.conf
 wget -O /usr/local/sbin/movelink https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/bin/movelink
 chmod +x /usr/local/sbin/movelink
 
-wget -O /etc/systemd/system/movelink.service https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/bin/movelink
+wget -O https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/systemd/movelink.service https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/bin/movelink
 
 systemctl daemon-reload
 systemctl enable movelink.service
