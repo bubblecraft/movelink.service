@@ -16,7 +16,7 @@ echo "target=/target" > test/etc/movelink.service.conf
 echo "sources=/sources/a,/sources/b" >> test/etc/movelink.service.conf
 
 
-ROOT=$(realpath test) ./src/bin/movelink.service
+ROOT=$(realpath test) ./src/bin/movelink
 
 if [ ! -L test/sources/a ]; then
   echo "ERROR Directory link a does not exist"
@@ -51,7 +51,7 @@ echo "sources=/sources/c" >> test/etc/movelink.service.conf
 
 echo cc > test/sources/c
 echo CC > test/target/sources/c
-ROOT=$(realpath test) ./src/bin/movelink.service
+ROOT=$(realpath test) ./src/bin/movelink
 
 if [ "`cat test/sources/c`" != "cc" ]; then
   echo "ERROR Content of source c was changed"
