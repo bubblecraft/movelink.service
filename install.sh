@@ -9,8 +9,8 @@ if [ -z "$TARGET" ]; then
 fi
 
 
-sudo echo sources="$SOURCES" > /etc/movelink.service.conf
-sudo echo target="$TARGET" >> /etc/movelink.service.conf
+echo sources="$SOURCES" > /etc/movelink.service.conf
+echo target="$TARGET" >> /etc/movelink.service.conf
 
-sudo wget -O /usr/local/sbin/movelink https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/bin/movelink
-sudo chmod +x /usr/local/sbin/movelink
+wget -O /usr/local/sbin/movelink https://raw.githubusercontent.com/bubblecraft/movelink.service/main/src/bin/movelink
+chmod +x /usr/local/sbin/movelink
