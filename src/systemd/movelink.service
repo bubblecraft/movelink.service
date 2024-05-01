@@ -1,11 +1,10 @@
 [Unit]
 Description="Movelinks" files on boot
 After=network-online.target
-Before=basic.target
 
 [Service]
 ExecStart=/usr/local/sbin/movelink
-Type=simple
+Type=oneshot
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=k3s.service
