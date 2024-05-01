@@ -1,0 +1,29 @@
+#!/bin/bash
+set -e
+
+[ -z "$ROOT" ] && ROOT=""
+
+movelink() {
+    echo Movelinking $ROOT$1 to $ROOT$2
+    mkdir -p $(dirname "$ROOT$2") || true
+    if [ -f "$ROOT$1" ]; then
+        cp "$ROOT$1" "$ROOT$2"
+    fi
+    if [ -d "$ROOT$1" ]; then
+        cp -r "$ROOT$1" "$ROOT$2"
+    fi
+    rm -fr "$ROOT$1"
+    ln -s "$ROOT$2" "$ROOT$1"
+}
+
+. $ROOT/etc/movelink.service.conf
+
+for source in ${sources//,/ }
+do
+    fullTarget="$target/$source"
+    if ! [ -e "$ROOT$fullTarget" ]; then
+        movelink "$source" "$fullTarget"
+    else
+        echo Target $fullTarget already exists, ignoring
+    fi
+done
