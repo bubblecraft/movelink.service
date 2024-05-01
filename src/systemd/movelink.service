@@ -1,0 +1,11 @@
+[Unit]
+Description="Movelinks" files on boot
+After=network-online.target
+Before=basic.target
+
+[Service]
+ExecStart=/usr/local/sbin/movelink
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
